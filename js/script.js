@@ -9,5 +9,8 @@ console.log('You are visiting a land page. Please follow the links to review all
   
 //   console.log(passCheck);
   
-  
+const [ grapes, oranges, apples ] = [10, 2];
+
+const hotel = {names: 'Julia', type: 3};
+console.log(hotel.name);
 

@@ -1,37 +1,24 @@
-// ---  Task Description
-// Напиши скрипт подсчета стоимости гравировки украшений. Для этого создай функцию calculateEngravingPrice(message, pricePerWord) принимающую строку (в строке будут только слова и пробелы) и цену гравировки одного слова, и возвращающую цену гравировки всех слов в строке.
+// ===--- Task Description
 
-// const calculateEngravingPrice = function(message, pricePerWord) {
-//   // твой код
-// };
+// Напиши функцию countProps(obj), считающую кол-во свойств в объекте. Функция возвращает число - количество свойств.
+
+// ===--- Task Description END
+
 
 // ====---- Task 02 Start
 console.log("TASK 02");
 
-const calculateEngravingPrice = function (message, pricePerWord) {
-  console.log('Price for enagraving of:"', message, '" is:');
-  return message.split(" ").length * pricePerWord;
+const countProps = function (obj) {
+  // твой код
+  // const objLength = Object.keys(obj).length;
+  return Object.keys(obj).length; // ?- return q-ty of keys array
 };
 
-/* ==-- Вызовы функции для проверки работоспособности твоей реализации. */
-console.log(
-  calculateEngravingPrice(
-    "Proin sociis natoque et magnis parturient montes mus",
-    10
-  )
-); // 80
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(countProps({})); // 0
 
-console.log(
-  calculateEngravingPrice(
-    "Proin sociis natoque et magnis parturient montes mus",
-    20
-  )
-); // 160
+console.log(countProps({ name: "Mango", age: 2 })); // 2
 
-console.log(
-  calculateEngravingPrice("Donec orci lectus aliquam est magnis", 40)
-); // 240
-
-console.log(
-  calculateEngravingPrice("Donec orci lectus aliquam est magnis", 20)
-); // 120
+console.log(countProps({ mail: "poly@mail.com", isOnline: true, score: 500 })); // 3

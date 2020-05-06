@@ -1,49 +1,43 @@
-// Напиши скрипт со следующим функционалом:
+// ===--- Task Description
 
-//     При загрузке страницы пользователю предлагается в prompt ввести число. Ввод сохраняется в переменную input и добавляется в массив чисел numbers.
-//     Операция ввода числа пользователем и сохранение в массив продолжается до тех пор, пока пользователь не нажмет Cancel в prompt.
-//     После того как пользователь прекратил ввод нажав Cancel, если массив не пустой, необходимо посчитать сумму всех элементов массива и записать ее в переменную total. Используй цикл for или for...of. После чего в консоль выведи строку 'Общая сумма чисел равна [сумма]'.
+// Напиши функцию calculateTotalPrice(allProdcuts, productName), которая получает массив объектов и имя продукта (значение свойства name). Возвращает общую стоимость продукта (цена * количество).
 
-// bell Делать проверку того, что пользователь ввел именно число, а не произвольный набор символов, не обязательно. Если хочешь, в случае некорректного ввода, показывай alert с текстом 'Было введено не число, попробуйте еще раз', при этом результат prompt записывать в массив чисел не нужно, после чего снова пользователю предлагается ввести число в prompt.
+//Вызовы функции для проверки работоспособности твоей реализации.
 
 // ====---- Task 06 Start
 console.log("TASK 06");
 
-let numEntered;
-const numbers = [];
-let total = 0;
+const products = [
+  { name: "Радар", price: 1300, quantity: 4 },
+  { name: "Сканер", price: 2700, quantity: 3 },
+  { name: "Дроид", price: 400, quantity: 7 },
+  { name: "Захват", price: 1200, quantity: 2 },
+];
 
-const sumOfInput = function () {
-  let counter = 0;
-  do {
-    numEntered = prompt("Enter number or press ESC to exit.");
+const calculateTotalPrice = function (allProdcuts, productName) {
+  let totalPrice = 0;
 
-    if (isNaN(numEntered)) {
-      alert("Введено не число, попробуйте еще раз!");
-      continue;
+  for (const insObj of allProdcuts) {
+    // console.log(Object.keys(insObj)[0]);
+    let name = Object.keys(insObj)[0];
+    //console.log(insObj.name);
+    //console.log(productName);
+
+    if (insObj.name === productName) {
+      totalPrice = insObj.price * insObj.quantity;
     }
-    
-    if (numEntered === null) {break;}
-    numbers[counter] = parseInt(numEntered);
-    counter += 1;
-  } while(1);
-
-  for (let number of numbers) {
-    total += number;
-    console.log(number);
   }
+  if (totalPrice === 0) {
+    return "Item not found or incorrect input";
+  }
+  return totalPrice;
 };
 
-console.log(numbers);
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(calculateTotalPrice(products, "Радар")); // 5200
 
-console.log(sumOfInput(), `Общая сумма чисел равна ${total}`);
+console.log(calculateTotalPrice(products, "Дроид")); // 2800
 
-
-//  const arr = ['Bobby', 'John', 'Chris', 'Admin'];
-//  for (let name of arr) {
-//    if (name === 'John') {
-//      continue;
-//    }
-//    console.log(name);
-//  }
-//  console.log(arr);
+console.log(calculateTotalPrice(products, "Дроед")); //
